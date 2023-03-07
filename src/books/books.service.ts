@@ -40,6 +40,7 @@ export class BooksService {
       status_cctv,
       stream_cctv,
       dinas,
+      updated_at,
     } = updateBookDto;
 
     const book = await this.getBookById(id);
@@ -51,6 +52,7 @@ export class BooksService {
     book.status_cctv = status_cctv;
     book.stream_cctv = stream_cctv;
     book.dinas = dinas;
+    book.updated_at = updated_at;
 
     await book.save();
   }

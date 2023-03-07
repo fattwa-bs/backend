@@ -1,4 +1,10 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BaseEntity,
+  Column,
+  Entity,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class Book extends BaseEntity {
@@ -28,4 +34,7 @@ export class Book extends BaseEntity {
 
   @Column()
   dinas: string;
+
+  @Column({ type: 'timestamptz' })
+  updated_at: string;
 }

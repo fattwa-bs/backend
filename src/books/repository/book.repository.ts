@@ -19,6 +19,7 @@ export class BookRepository extends Repository<Book> {
       status_cctv,
       stream_cctv,
       dinas,
+      updated_at,
     } = filter;
 
     const query = this.createQueryBuilder('book');
@@ -54,18 +55,26 @@ export class BookRepository extends Repository<Book> {
     }
 
     if (status_cctv) {
-      query.andWhere('lower(cctv.status_cctv) LIKE : status_cctv', {
-        status_cctv: `%${status_cctv.toLowerCase()}%`,
+      query.andWhere('lower(book.status_cctv) LIKE :status_cctv', {
+        status_cctv: `%${status_cctv.toLowerCase()}`,
       });
     }
+
     if (stream_cctv) {
-      query.andWhere('lower(cctv.stream_cctv) LIKE : stream_cctv', {
-        stream_cctv: `%${stream_cctv.toLowerCase()}%`,
+      query.andWhere('lower(book.stream_cctv) LIKE :stream_cctv', {
+        stream_cctv: `%${stream_cctv.toLowerCase()}`,
       });
     }
+
     if (dinas) {
-      query.andWhere('lower(cctv.dinas) LIKE : dinas', {
-        dinas: `%${dinas.toLowerCase()}%`,
+      query.andWhere('lower(book.dinas) LIKE :dinas', {
+        dinas: `%${dinas.toLowerCase()}`,
+      });
+    }
+
+    if (updated_at) {
+      query.andWhere('lower(book.updated_at) LIKE :updated_at', {
+        updated_at: `%${updated_at.toLowerCase()}`,
       });
     }
 
@@ -82,6 +91,7 @@ export class BookRepository extends Repository<Book> {
       status_cctv,
       stream_cctv,
       dinas,
+      updated_at,
     } = createBookDto;
 
     const book = this.create();
@@ -93,6 +103,7 @@ export class BookRepository extends Repository<Book> {
     book.status_cctv = status_cctv;
     book.stream_cctv = stream_cctv;
     book.dinas = dinas;
+    book.updated_at = updated_at;
 
     try {
       await book.save();

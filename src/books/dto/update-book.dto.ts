@@ -30,4 +30,7 @@ export class UpdateBookDto {
 
   @IsNotEmpty()
   dinas: string;
+
+  @IsNotEmpty()
+  lastupdate: string;
 }

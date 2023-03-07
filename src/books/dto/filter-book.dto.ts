@@ -34,4 +34,7 @@ export class FilterBookDto {
 
   @IsOptional()
   dinas: string;
+
+  @IsOptional()
+  updated_at: string;
 }

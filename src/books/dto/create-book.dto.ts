@@ -1,5 +1,6 @@
 import { Type } from 'class-transformer';
 import {
+  IsDate,
   IsEmpty,
   IsInt,
   IsIP,
@@ -35,4 +36,7 @@ export class CreateBookDto {
 
   @IsNotEmpty()
   dinas: string;
+
+  @IsNotEmpty()
+  updated_at: string;
 }
