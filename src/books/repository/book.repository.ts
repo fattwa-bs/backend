@@ -73,9 +73,7 @@ export class BookRepository extends Repository<Book> {
     }
 
     if (updated_at) {
-      query.andWhere('lower(book.updated_at) LIKE :updated_at', {
-        updated_at: `%${updated_at.toLowerCase()}`,
-      });
+      query.andWhere('book.updated_at :updated_at', { updated_at });
     }
 
     return await query.getMany();

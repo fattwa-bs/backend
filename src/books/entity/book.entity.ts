@@ -35,6 +35,6 @@ export class Book extends BaseEntity {
   @Column()
   dinas: string;
 
-  @Column({ type: 'timestamptz' })
+  @UpdateDateColumn()
   updated_at: string;
 }
